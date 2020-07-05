@@ -1,6 +1,7 @@
 ﻿using OfficeOpenXml;
 using System;
 using System.IO;
+using System.Reflection;
 
 namespace ConsoleApp2
 {
@@ -10,19 +11,25 @@ namespace ConsoleApp2
         {
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
 
-            var fileSource = new FileInfo(@"C:\Users\nhatv\Work\VisualBasic\New-Data.xlsx");
-            var fileDestination = new FileInfo(@"C:\Users\nhatv\Work\VisualBasic\Reports.xlsm");
+            string pathDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+
+            var fileSource = new FileInfo($"{pathDirectory}/Data/FlextimeSheetForm_202006_Akiyama.xlsx");
+            var fileDestination = new FileInfo($"{pathDirectory}/Data/FlextimeSheetForm20200601.xlsx");
 
             using (var excelFileSource = new ExcelPackage(fileSource))
             using (var excelFileDestination = new ExcelPackage(fileDestination))
             {
                 var worksheetSource = excelFileSource.Workbook.Worksheets[0];
+                var cellRange = worksheetSource.Cells["D2:D35"];
 
-                var cellRange = worksheetSource.Cells["A2:D9"];
+                foreach (var worksheet in excelFileDestination.Workbook.Worksheets)
+                {
+                    Console.WriteLine(worksheet);
+                }
 
-                var worksheetDestination = excelFileDestination.Workbook.Worksheets[0];
+                var worksheetDestination = excelFileDestination.Workbook.Worksheets[1];
 
-                var destination = worksheetDestination.Cells["A2"];
+                var destination = worksheetDestination.Cells["U8:U37"];
 
                 cellRange.Copy(destination);
 
