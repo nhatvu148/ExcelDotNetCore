@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\nhatv\\source\\repos\\ConsoleApp2\\ConsoleApp2\\ConsoleApp2.csproj": {}
+    "D:\\AKIYAMA\\Work\\ExcelDotNetCore\\ConsoleApp2\\ConsoleApp2.csproj": {}
   },
   "projects": {
-    "C:\\Users\\nhatv\\source\\repos\\ConsoleApp2\\ConsoleApp2\\ConsoleApp2.csproj": {
+    "D:\\AKIYAMA\\Work\\ExcelDotNetCore\\ConsoleApp2\\ConsoleApp2.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\nhatv\\source\\repos\\ConsoleApp2\\ConsoleApp2\\ConsoleApp2.csproj",
+        "projectUniqueName": "D:\\AKIYAMA\\Work\\ExcelDotNetCore\\ConsoleApp2\\ConsoleApp2.csproj",
         "projectName": "ConsoleApp2",
-        "projectPath": "C:\\Users\\nhatv\\source\\repos\\ConsoleApp2\\ConsoleApp2\\ConsoleApp2.csproj",
-        "packagesPath": "C:\\Users\\nhatv\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\nhatv\\source\\repos\\ConsoleApp2\\ConsoleApp2\\obj\\",
+        "projectPath": "D:\\AKIYAMA\\Work\\ExcelDotNetCore\\ConsoleApp2\\ConsoleApp2.csproj",
+        "packagesPath": "C:\\Users\\TechnoStar\\.nuget\\packages\\",
+        "outputPath": "D:\\AKIYAMA\\Work\\ExcelDotNetCore\\ConsoleApp2\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\nhatv\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\TechnoStar\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
