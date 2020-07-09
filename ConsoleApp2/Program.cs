@@ -20,18 +20,24 @@ namespace ConsoleApp2
             using (var excelFileDestination = new ExcelPackage(fileDestination))
             {
                 var worksheetSource = excelFileSource.Workbook.Worksheets[0];
-                var cellRange = worksheetSource.Cells["D2:D35"];
+                var cellRange = worksheetSource.Cells["D6:D35"];
 
                 foreach (var worksheet in excelFileDestination.Workbook.Worksheets)
                 {
                     Console.WriteLine(worksheet);
                 }
 
-                var worksheetDestination = excelFileDestination.Workbook.Worksheets[1];
+                var worksheetDestination = excelFileDestination.Workbook.Worksheets[0];
 
-                var destination = worksheetDestination.Cells["U8:U37"];
+                var destination = worksheetDestination.Cells["D8:D37"];
 
-                cellRange.Copy(destination);
+                foreach (var cell in destination)
+                {
+                    string range = cell.ToString() + ":" + cell.ToString().Substring(0, 1) + cell.ToString().Substring(1);
+                    Console.WriteLine(range);
+                }
+
+                // cellRange.Copy(destination);
 
                 excelFileDestination.Save();
             }
