@@ -9,12 +9,17 @@ namespace ConsoleApp2
     {
         static void Main(string[] args)
         {
+            // args[0] = Akiyama, args[1] = 20200601
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
 
             string pathDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            var name = Convert.ToString(args[0]);
+            var date = Convert.ToString(args[1]);
+            Console.WriteLine(name);
+            Console.WriteLine(date.Substring(0, 6));
 
-            var fileSource = new FileInfo($"{pathDirectory}/Data/FlextimeSheetForm_202006_Akiyama.xlsx");
-            var fileDestination = new FileInfo($"{pathDirectory}/Data/FlextimeSheetForm20200601.xlsx");
+            var fileSource = new FileInfo($"{pathDirectory}/Data/FlextimeSheetForm_{date.Substring(0, 6)}_{name}.xlsx");
+            var fileDestination = new FileInfo($"{pathDirectory}/Data/FlextimeSheetForm{date}.xlsx");
 
             using (var excelFileSource = new ExcelPackage(fileSource))
             using (var excelFileDestination = new ExcelPackage(fileDestination))
@@ -30,14 +35,15 @@ namespace ConsoleApp2
                     Console.WriteLine(worksheet);
                 }
 
-                var worksheetDestination = excelFileDestination.Workbook.Worksheets[0];
+                var worksheetDestination = excelFileDestination.Workbook.Worksheets["_6月 "];
 
                 var nameDestination = worksheetDestination.Cells["C5:I5"];
                 var destination1 = worksheetDestination.Cells["D8:D37"];
                 var destination2 = worksheetDestination.Cells["G8:G37"];
                 var destination3 = worksheetDestination.Cells["J8:J37"];
 
-                if (worksheetDestination.Cells["C5:I5"].Merge) {
+                if (worksheetDestination.Cells["C5:I5"].Merge)
+                {
                     worksheetDestination.Cells["C5:I5"].Merge = false;
                     nameSource.Copy(nameDestination);
                     worksheetDestination.Cells["C5:I5"].Merge = true;
