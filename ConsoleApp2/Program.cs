@@ -14,15 +14,12 @@ namespace ConsoleApp2
 
             string[] monthJPs = { "_1月", "_2月", "_3月", "_4月", "_5月", "_6月", "_7月", "_8月", "_9月", "_10月", "_11月", "_12月" };
 
-            string pathDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            string pathDirectory = $"{Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}\\..";
             var name = Convert.ToString(args[0]);
             var date = Convert.ToString(args[1]);
             var endRow = Convert.ToString(args[2]);
 
             bool isMonthJP = Int32.TryParse(date.Substring(4, 2), out int monthJP);
-
-            Console.WriteLine(endRow);
-            Console.WriteLine(date.Substring(0, 6));
 
             string yearMonth = "";
             switch (monthJP)
@@ -54,9 +51,9 @@ namespace ConsoleApp2
                     break;
             }
 
-            var fileSource = new FileInfo($"{pathDirectory}/Data/FlextimeSheetForm_{date.Substring(0, 6)}_{name}.xlsx");
-            // FOCUS HERE FOR WORKSHEET SELECTION:::
-            var fileDestination = new FileInfo($"{pathDirectory}/Data/FlextimeSheetForm{yearMonth}01.xlsx");
+            var fileSource = new FileInfo($"{pathDirectory}/output/FlextimeSheetForm_{date.Substring(0, 6)}_{name}.xlsx");
+            var fileDestination = new FileInfo($"{pathDirectory}/FlextimeSheetForm{yearMonth}01.xlsx");
+            var fileDestinationOutput = new FileInfo($"{pathDirectory}/output/FlextimeSheetForm_{date.Substring(0, 6)}_{name}.xlsx");
 
             using (var excelFileSource = new ExcelPackage(fileSource))
             using (var excelFileDestination = new ExcelPackage(fileDestination))
@@ -142,7 +139,10 @@ namespace ConsoleApp2
                         worksheetDestination.Cells[range3].Merge = true;
                     }
                 }
-                excelFileDestination.Save();
+
+                excelFileDestination.SaveAs(fileDestinationOutput);
+                // excelFileDestination.Save();
+                Console.Write($"{name} downloaded FlextimeSheetForm_{date.Substring(0, 6)}_{name}.xlsx");
             }
         }
     }
