@@ -14,7 +14,7 @@ namespace ConsoleApp2
 
             string[] monthJPs = { "_1月", "_2月", "_3月", "_4月", "_5月", "_6月", "_7月", "_8月", "_9月", "_10月", "_11月", "_12月" };
 
-            string pathDirectory = $"{Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}\\..";
+            string pathDirectory = $"{Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}/..";
             var name = Convert.ToString(args[0]);
             var date = Convert.ToString(args[1]);
             var endRow = Convert.ToString(args[2]);
